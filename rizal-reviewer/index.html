@@ -23,7 +23,7 @@ select{min-width:260px;max-width:100%}button.tg{cursor:pointer}
 .opt{display:flex;align-items:center;gap:14px;text-align:left;background:var(--card2);color:var(--tx);border:1px solid var(--line);border-radius:14px;padding:16px;font:600 1rem inherit;cursor:pointer;transition:.15s}
 .opt:hover:not(:disabled){border-color:var(--pri);transform:translateY(-1px)}.opt b{flex:none;width:34px;height:34px;border-radius:50%;background:#2a3a5c;display:grid;place-items:center}
 .opt.ok{border-color:var(--ok);background:#0f3a25}.opt.bad{border-color:var(--bad);background:#3f1620}.opt:disabled{cursor:default}
-.fb{margin-top:16px;padding:12px 14px;border-radius:12px;font-weight:600}.fb.ok{background:#0f3a25;color:#b9f6ce}.fb.bad{background:#3f1620;color:#ffc9d0}
+.fb{margin-top:18px;padding:18px 20px;border-radius:16px;font-weight:500;line-height:1.55}.fb .ft{font-size:1.15rem;font-weight:800;margin-bottom:8px}.fb.ok{background:#0f3a25;border:1px solid var(--ok);color:#d3fbe3}.fb.ok .ft{color:#4ade80}.fb.bad{background:#3f1620;border:1px solid var(--bad);color:#ffd9de}.fb.bad .ft{color:#f87171}kbd{font:inherit;font-size:.7rem;opacity:.7;background:rgba(255,255,255,.18);border-radius:5px;padding:2px 6px;margin-left:6px}
 .btn{background:var(--pri);color:#fff;border:0;border-radius:12px;padding:12px 22px;font:700 1rem inherit;cursor:pointer}.btn.alt{background:var(--card2);border:1px solid var(--line)}
 .act{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}input.big{width:100%;font-size:1.1rem}textarea{width:100%;min-height:150px;font-size:1rem}
 .match{display:grid;grid-template-columns:1fr 1.4fr;gap:14px}@media(max-width:700px){.match{grid-template-columns:1fr}}.match>div{display:grid;gap:10px;align-content:start}
@@ -68,17 +68,18 @@ function done(s,t,onAgain){$('#main').innerHTML=`<div class="q res"><div style="
 const badge=u=>`<span class="badge">${esc(uname(u))}</span>`;
 // ---------- MC & ID
 function start(){S={i:0,sc:0,tot:0};streak=0;
- if(mode=='mc'||mode=='id'){let p=pool(i=>i.q);if(mode=='mc')S.q=p.map(mkMC);else S.q=p.filter(i=>i.t.length<=45).map(it=>({u:it.u,it,a:it.k=='chap'?it.t:it.t,q:it.k=='chap'?`Ano ang pamagat ng Kabanata ${it.n} ng Noli Me Tangere?`:it.k=='date'?`Kailan ito nangyari: “${mask(it.d,it.t)}”?`:`Sino/Ano ang tinutukoy: “${mask(it.d,it.t)}”?`}));if(shuffle)S.q=shuf(S.q);qMC()}
- else if(mode=='mt'){const p=pool(i=>i.q&&i.k!='chap');S.r=[];const s=shuf(p);for(let i=0;i<s.length;i+=5)if(s.slice(i,i+5).length>=3)S.r.push(s.slice(i,i+5));S.i=0;rMT()}
+ if(mode=='mc'||mode=='id'){let p=pool(i=>i.q&&i.c);if(mode=='mc')S.q=p.map(mkMC);else S.q=p.filter(i=>i.t.length<=45).map(it=>({u:it.u,it,a:it.t.replace(/\s*\(.*?\)/g,''),q:it.k=='chap'?`Ano ang pamagat ng Kabanata ${it.n} ng Noli Me Tangere?`:it.k=='date'?`Kailan ito nangyari: “${mask(it.d,it.t)}”?`:`Sino/Ano ang tinutukoy: “${mask(it.d,it.t)}”?`}));if(shuffle)S.q=shuf(S.q);qMC()}
+ else if(mode=='mt'){const p=pool(i=>i.q&&i.c);S.r=[];const s=shuf(p);for(let i=0;i<s.length;i+=5)if(s.slice(i,i+5).length>=3)S.r.push(s.slice(i,i+5));S.i=0;rMT()}
  else if(mode=='en'){S.q=enums.filter(e=>unit<0||e.u==unit);if(shuffle)S.q=shuf(S.q);qEN()}
- else if(mode=='fc'){S.q=pool(i=>i.d);if(shuffle)S.q=shuf(S.q);S.f=false;qFC()}
+ else if(mode=='fc'){S.q=pool(i=>i.d&&i.c);if(shuffle)S.q=shuf(S.q);S.f=false;qFC()}
  else seSearch()}
 function qMC(){const q=S.q[S.i];if(!q)return $('#main').innerHTML=`<div class="q res"><h2>Walang tanong sa yunit na ito</h2></div>`;
  setStat(`Tanong ${S.i+1} ng ${S.q.length}`,0,`Puntos: ${S.sc} / ${S.tot} (${S.tot?Math.round(S.sc/S.tot*100):0}%)`,S.i/S.q.length);
  $('#main').innerHTML=`<div class="q"><div class="qh">${badge(q.u)}<span>#${S.i+1} of ${S.q.length}</span></div><div class="qt">${esc(q.q)}</div>`+(mode=='mc'?`<div class="opts">${q.o.map((o,k)=>`<button class="opt" data-o="${k}"><b>${'ABCD'[k]}</b>${esc(o)}</button>`).join('')}</div>`:`<input class="big" id="ans" placeholder="I-type ang sagot..." autocomplete="off"><div class="act"><button class="btn" id="chk">Suriin</button><button class="btn alt" id="skp">Ipakita ang sagot</button></div>`)+`<div id="fb"></div></div>`;
- const fin=ok=>{S.tot++;if(ok){S.sc++;streak++}else streak=0;beep(ok);setStat(`Tanong ${S.i+1} ng ${S.q.length}`,0,`Puntos: ${S.sc} / ${S.tot} (${Math.round(S.sc/S.tot*100)}%)`,(S.i+1)/S.q.length);$('#fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}">${ok?'✅ Tama!':'❌ Mali.'} Sagot: ${esc(q.a)}</div><div class="act"><button class="btn" id="nx" autofocus>${S.i+1<S.q.length?'Susunod →':'Tingnan ang resulta'}</button></div>`;$('#nx').focus();$('#nx').onclick=()=>{S.i++;S.i<S.q.length?qMC():done(S.sc,S.tot,start)};document.querySelector('#ans')&&(document.querySelector('#ans').disabled=true)};
- if(mode=='mc')document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const v=q.o[b.dataset.o],ok=v==q.a;document.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(q.o[x.dataset.o]==q.a)x.classList.add('ok')});if(!ok)b.classList.add('bad');fin(ok)});
- else{const a=$('#ans');a.focus();let d=0;const go=ok=>{if(d)return;d=1;fin(ok)};$('#chk').onclick=()=>go(accept(a.value,q.a));$('#skp').onclick=()=>go(false);a.onkeydown=e=>{if(e.key=='Enter')go(accept(a.value,q.a))}}}
+ const why=(ok,ch)=>{const it=q.it;let t=`<b>${esc(label(it))}</b> – ${esc(it.d)}`;if(!ok){if(mode=='mc'){const w=items.find(x=>x.d&&x!=it&&label(x)==ch);t+=`<br><br>✗ Maling sagot ang “${esc(ch)}”${w?': '+esc(w.d):'.'}`}else if(ch)t+=`<br><br>✗ Ang isinagot mo: “${esc(ch)}”.`}return t};
+ const fin=(ok,ch)=>{S.tot++;if(ok){S.sc++;streak++}else streak=0;beep(ok);setStat(`Tanong ${S.i+1} ng ${S.q.length}`,0,`Puntos: ${S.sc} / ${S.tot} (${Math.round(S.sc/S.tot*100)}%)`,(S.i+1)/S.q.length);$('#fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}"><div class="ft">${ok?'✓ TAMA!':'✗ MALI!'}</div><div>${why(ok,ch)}</div><div class="act" style="justify-content:flex-end"><button class="btn" id="nx">${S.i+1<S.q.length?'Susunod':'Tingnan ang resulta'} <kbd>Enter ⏎</kbd></button></div></div>`;$('#nx').focus();$('#nx').onclick=()=>{S.i++;S.i<S.q.length?qMC():done(S.sc,S.tot,start)};document.querySelector('#ans')&&(document.querySelector('#ans').disabled=true)};
+ if(mode=='mc')document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const v=q.o[b.dataset.o],ok=v==q.a;document.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(q.o[x.dataset.o]==q.a)x.classList.add('ok')});if(!ok)b.classList.add('bad');fin(ok,v)});
+ else{const a=$('#ans');a.focus();let d=0;const go=(ok,sk)=>{if(d)return;d=1;fin(ok,sk?'':a.value.trim())};$('#chk').onclick=()=>go(accept(a.value,q.a));$('#skp').onclick=()=>go(false,1);a.onkeydown=e=>{if(e.key=='Enter')go(accept(a.value,q.a))}}}
 // ---------- Matching
 function rMT(){const r=S.r[S.i];if(!r)return $('#main').innerHTML=`<div class="q res"><h2>Kulang ang datos sa yunit na ito</h2></div>`;let L=shuf(r),R=shuf(r),sel=null,left=r.length,sh=x=>{let d=x.d.replace(/\s+/g,' ');return d.length>95?d.slice(0,92).replace(/\s\S*$/,'')+'…':d};
  setStat(`Hanay ${S.i+1} ng ${S.r.length}`,0,`Puntos: ${S.sc} tama · ${S.tot-S.sc} mali`,S.i/S.r.length);
@@ -104,5 +105,6 @@ $('#unit').innerHTML=`<option value="-1">📚 LAHAT NG TANONG</option>`+units.ma
 $('#unit').onchange=e=>{unit=+e.target.value;start()};
 $('#shuf').onclick=e=>{shuffle=!shuffle;e.target.textContent='🔀 Shuffle: '+(shuffle?'Bukas':'Sarado');start()};
 $('#snd').onclick=e=>{sound=!sound;e.target.textContent=(sound?'🔊':'🔇')+' Sound: '+(sound?'Bukas':'Sarado')};
+document.addEventListener('keydown',e=>{if(e.key=='Enter'){const n=$('#nx');if(n&&document.activeElement!==n){e.preventDefault();n.click()}}});
 tabs();start();
 </script></body></html>
