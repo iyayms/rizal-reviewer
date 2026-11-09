@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fil"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SANA PO MAKAPASA - Rizal Reviewer</title>
+<style>
+:root{--bg:#0b1220;--card:#18233b;--card2:#1d2a47;--line:#2a3a5c;--tx:#eef3ff;--mut:#9fb0d0;--pri:#3b82f6;--ok:#22c55e;--bad:#ef4444;--warn:#f59e0b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,#16264a,var(--bg));color:var(--tx);font:16px/1.5 system-ui,Segoe UI,Roboto,sans-serif;min-height:100vh}
+.wrap{max-width:1150px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.4rem;margin:6px 0 2px}.sub{color:var(--mut);margin:0 0 16px;font-size:.9rem}
+.box{background:rgba(24,35,59,.7);border:1px solid var(--line);border-radius:18px;padding:12px;margin-bottom:14px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}.tab{flex:1;min-width:120px;padding:11px 10px;border:0;border-radius:10px;background:transparent;color:var(--mut);font:600 .95rem inherit;cursor:pointer}
+.tab:hover{color:var(--tx)}.tab.on{background:var(--pri);color:#fff;box-shadow:0 0 0 1px #6aa2ff}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.row .sp{flex:1}
+select,button.tg,input,textarea{background:var(--card2);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit}
+select{min-width:260px;max-width:100%}button.tg{cursor:pointer}
+.stat{display:flex;justify-content:space-between;font-weight:700;gap:8px;flex-wrap:wrap}.streak{color:var(--warn)}
+.bar{height:9px;background:#0d1730;border-radius:9px;margin-top:10px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pri),var(--ok));width:0;transition:.3s}
+.q{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px}
+.badge{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.03em;color:#6aa2ff;border:1px solid #2f5fb8;background:#13264d;border-radius:99px;padding:5px 12px;text-transform:uppercase}
+.qh{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--mut);font-size:.85rem}
+.qt{font-size:1.4rem;font-weight:800;margin:20px 0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.opts{grid-template-columns:1fr}.qt{font-size:1.15rem}}
+.opt{display:flex;align-items:center;gap:14px;text-align:left;background:var(--card2);color:var(--tx);border:1px solid var(--line);border-radius:14px;padding:16px;font:600 1rem inherit;cursor:pointer;transition:.15s}
+.opt:hover:not(:disabled){border-color:var(--pri);transform:translateY(-1px)}.opt b{flex:none;width:34px;height:34px;border-radius:50%;background:#2a3a5c;display:grid;place-items:center}
+.opt.ok{border-color:var(--ok);background:#0f3a25}.opt.bad{border-color:var(--bad);background:#3f1620}.opt:disabled{cursor:default}
+.fb{margin-top:16px;padding:12px 14px;border-radius:12px;font-weight:600}.fb.ok{background:#0f3a25;color:#b9f6ce}.fb.bad{background:#3f1620;color:#ffc9d0}
+.btn{background:var(--pri);color:#fff;border:0;border-radius:12px;padding:12px 22px;font:700 1rem inherit;cursor:pointer}.btn.alt{background:var(--card2);border:1px solid var(--line)}
+.act{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}input.big{width:100%;font-size:1.1rem}textarea{width:100%;min-height:150px;font-size:1rem}
+.match{display:grid;grid-template-columns:1fr 1.4fr;gap:14px}@media(max-width:700px){.match{grid-template-columns:1fr}}.match>div{display:grid;gap:10px;align-content:start}
+.mi{padding:12px 14px;border-radius:12px;background:var(--card2);border:1px solid var(--line);cursor:pointer;font-size:.95rem;text-align:left;color:var(--tx)}.mi.sel{border-color:var(--pri);background:#16305e}.mi.done{border-color:var(--ok);background:#0f3a25;cursor:default;opacity:.8}.mi.shake{animation:sh .35s;border-color:var(--bad)}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.fc{perspective:900px;cursor:pointer}.fci{min-height:230px;border-radius:20px;border:1px solid var(--line);background:var(--card2);display:grid;place-items:center;text-align:center;padding:28px;font-size:1.35rem;font-weight:700}.fci small{display:block;color:var(--mut);font-weight:500;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em;font-size:.72rem}
+.fci.back{background:#122a4d;border-color:var(--pri);font-weight:500;font-size:1.1rem}
+.res{text-align:center;padding:30px 10px}.res h2{font-size:2rem;margin:.2em 0}
+.hit{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--card2);margin-top:10px}.hit .u{color:var(--mut);font-size:.75rem}.hit b{color:#9cc2ff}mark{background:#facc15;color:#111;border-radius:3px;padding:0 2px}
+.ek{display:flex;gap:8px;align-items:flex-start;margin:6px 0}.ek.y{color:#86efac}.ek.n{color:#fca5a5}
+</style></head><body><div class="wrap">
+<h1>📜 SANA PO MAKAPASA – Rizal Reviewer</h1><p class="sub">Noli, Fili at Kalbaryo · p. 78–280 · Reviewer by @Iya</p>
+<div class="box"><div class="tabs" id="tabs"></div></div>
+<div class="box row"><span style="color:var(--mut)">Paksa / Yunit:</span><select id="unit"></select><span class="sp"></span>
+<button class="tg" id="shuf">🔀 Shuffle: Bukas</button><button class="tg" id="snd">🔊 Sound: Bukas</button></div>
+<div class="box"><div class="stat"><span id="s1"></span><span class="streak" id="s2"></span><span id="s3"></span></div><div class="bar"><i id="pb"></i></div></div>
+<div id="main"></div></div>
+<script src="data.js"></script>
+<script>
+const {units,items,enums}=DATA;const $=s=>document.querySelector(s);
+const MODES=[['id','✏️ Identification'],['mc','🔘 Multiple Choice'],['mt','🔗 Matching Type'],['en','📋 Enumeration'],['fc','🗂️ Flashcards'],['se','🔍 Reviewer Search']];
+let mode='mc',unit=-1,shuffle=true,sound=true,streak=0,S={};
+const rnd=a=>a[Math.floor(Math.random()*a.length)],shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
+const uname=i=>units[i].replace(/\s*\(.*?\)\s*$/,'');
+function beep(ok){if(!sound)return;try{const a=beep.c||(beep.c=new(window.AudioContext||webkitAudioContext)),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.type='sine';o.frequency.value=ok?660:180;if(ok)o.frequency.setValueAtTime(880,a.currentTime+.09);g.gain.setValueAtTime(.15,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.25);o.start();o.stop(a.currentTime+.25)}catch(e){}}
+const pool=(f)=>items.filter(i=>(unit<0||i.u==unit)&&(!f||f(i)));
+const mask=(d,t)=>t.length>3?d.replace(new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'ig'),'_____'):d;
+const label=i=>i.k=='chap'?`Kab. ${i.n} – ${i.t}`:i.t;
+function distract(it,n=3){const same=items.filter(x=>x.q&&x.k==it.k&&x!=it&&label(x)!=label(it));let a=shuf(same.filter(x=>x.u==it.u)),b=shuf(same.filter(x=>x.u!=it.u)),r=[],seen=new Set([label(it)]);for(const x of [...a,...b]){const l=label(x);if(!seen.has(l)){seen.add(l);r.push(l)}if(r.length>=n)break}return r}
+function mkMC(it){let q,ans=label(it);
+ if(it.k=='chap'){if(Math.random()<.5){q=`Ano ang pamagat ng Kabanata ${it.n} ng Noli Me Tangere?`;ans=it.t;const o=distract(it).map(x=>x.replace(/^Kab\. \S+ – /,''));return{u:it.u,q,o:shuf([ans,...o]),a:ans,it}}q=`Aling kabanata ang naglalarawan sa: “${it.d}”?`}
+ else if(it.k=='date')q=`Anong petsa ang tumutugma sa: “${mask(it.d,it.t)}”?`;
+ else q=`Sino/Ano ang tinutukoy: “${mask(it.d,it.t)}”?`;
+ return{u:it.u,q,o:shuf([ans,...distract(it)]),a:ans,it}}
+const lev=(a,b)=>{const m=[...Array(a.length+1)].map((_,i)=>[i,...Array(b.length).fill(0)]);for(let j=1;j<=b.length;j++)m[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)m[i][j]=Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(a[i-1]==b[j-1]?0:1));return m[a.length][b.length]};
+function accept(inp,ans){const a=norm(ans).replace(/\b(ang|ng|si|ni|mga|ang)\b/g,'').split(' ').filter(Boolean),u=norm(inp).split(' ').filter(Boolean);if(!u.length)return false;let hit=0;a.forEach(t=>{if(u.some(x=>x==t||(t.length>4&&lev(x,t)<=1)))hit++});return hit/a.length>=.75}
+function setStat(a,b,c,p){$('#s1').textContent=a;$('#s2').innerHTML=streak?`🔥 Streak: ${streak}`:'';$('#s3').textContent=c;$('#pb').style.width=(p*100)+'%'}
+function tabs(){$('#tabs').innerHTML=MODES.map(m=>`<button class="tab ${m[0]==mode?'on':''}" data-m="${m[0]}">${m[1]}</button>`).join('');document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{mode=b.dataset.m;tabs();start()})}
+function done(s,t,onAgain){$('#main').innerHTML=`<div class="q res"><div style="font-size:3rem">${s/t>=.8?'🏆':s/t>=.5?'👍':'📚'}</div><h2>${s} / ${t} (${t?Math.round(s/t*100):0}%)</h2><p style="color:var(--mut)">${s/t>=.8?'Ang galing! Sana nga makapasa!':'Review pa ng kaunti, kaya mo yan!'}</p><div class="act" style="justify-content:center"><button class="btn" id="again">Ulitin</button></div></div>`;$('#again').onclick=onAgain}
+const badge=u=>`<span class="badge">${esc(uname(u))}</span>`;
+// ---------- MC & ID
+function start(){S={i:0,sc:0,tot:0};streak=0;
+ if(mode=='mc'||mode=='id'){let p=pool(i=>i.q);if(mode=='mc')S.q=p.map(mkMC);else S.q=p.filter(i=>i.t.length<=45).map(it=>({u:it.u,it,a:it.k=='chap'?it.t:it.t,q:it.k=='chap'?`Ano ang pamagat ng Kabanata ${it.n} ng Noli Me Tangere?`:it.k=='date'?`Kailan ito nangyari: “${mask(it.d,it.t)}”?`:`Sino/Ano ang tinutukoy: “${mask(it.d,it.t)}”?`}));if(shuffle)S.q=shuf(S.q);qMC()}
+ else if(mode=='mt'){const p=pool(i=>i.q&&i.k!='chap');S.r=[];const s=shuf(p);for(let i=0;i<s.length;i+=5)if(s.slice(i,i+5).length>=3)S.r.push(s.slice(i,i+5));S.i=0;rMT()}
+ else if(mode=='en'){S.q=enums.filter(e=>unit<0||e.u==unit);if(shuffle)S.q=shuf(S.q);qEN()}
+ else if(mode=='fc'){S.q=pool(i=>i.d);if(shuffle)S.q=shuf(S.q);S.f=false;qFC()}
+ else seSearch()}
+function qMC(){const q=S.q[S.i];if(!q)return $('#main').innerHTML=`<div class="q res"><h2>Walang tanong sa yunit na ito</h2></div>`;
+ setStat(`Tanong ${S.i+1} ng ${S.q.length}`,0,`Puntos: ${S.sc} / ${S.tot} (${S.tot?Math.round(S.sc/S.tot*100):0}%)`,S.i/S.q.length);
+ $('#main').innerHTML=`<div class="q"><div class="qh">${badge(q.u)}<span>#${S.i+1} of ${S.q.length}</span></div><div class="qt">${esc(q.q)}</div>`+(mode=='mc'?`<div class="opts">${q.o.map((o,k)=>`<button class="opt" data-o="${k}"><b>${'ABCD'[k]}</b>${esc(o)}</button>`).join('')}</div>`:`<input class="big" id="ans" placeholder="I-type ang sagot..." autocomplete="off"><div class="act"><button class="btn" id="chk">Suriin</button><button class="btn alt" id="skp">Ipakita ang sagot</button></div>`)+`<div id="fb"></div></div>`;
+ const fin=ok=>{S.tot++;if(ok){S.sc++;streak++}else streak=0;beep(ok);setStat(`Tanong ${S.i+1} ng ${S.q.length}`,0,`Puntos: ${S.sc} / ${S.tot} (${Math.round(S.sc/S.tot*100)}%)`,(S.i+1)/S.q.length);$('#fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}">${ok?'✅ Tama!':'❌ Mali.'} Sagot: ${esc(q.a)}</div><div class="act"><button class="btn" id="nx" autofocus>${S.i+1<S.q.length?'Susunod →':'Tingnan ang resulta'}</button></div>`;$('#nx').focus();$('#nx').onclick=()=>{S.i++;S.i<S.q.length?qMC():done(S.sc,S.tot,start)};document.querySelector('#ans')&&(document.querySelector('#ans').disabled=true)};
+ if(mode=='mc')document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const v=q.o[b.dataset.o],ok=v==q.a;document.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(q.o[x.dataset.o]==q.a)x.classList.add('ok')});if(!ok)b.classList.add('bad');fin(ok)});
+ else{const a=$('#ans');a.focus();let d=0;const go=ok=>{if(d)return;d=1;fin(ok)};$('#chk').onclick=()=>go(accept(a.value,q.a));$('#skp').onclick=()=>go(false);a.onkeydown=e=>{if(e.key=='Enter')go(accept(a.value,q.a))}}}
+// ---------- Matching
+function rMT(){const r=S.r[S.i];if(!r)return $('#main').innerHTML=`<div class="q res"><h2>Kulang ang datos sa yunit na ito</h2></div>`;let L=shuf(r),R=shuf(r),sel=null,left=r.length,sh=x=>{let d=x.d.replace(/\s+/g,' ');return d.length>95?d.slice(0,92).replace(/\s\S*$/,'')+'…':d};
+ setStat(`Hanay ${S.i+1} ng ${S.r.length}`,0,`Puntos: ${S.sc} tama · ${S.tot-S.sc} mali`,S.i/S.r.length);
+ $('#main').innerHTML=`<div class="q"><div class="qh"><span class="badge">Pagtapatin ang bawat isa</span><span>Pumili sa kaliwa, pagkatapos sa kanan</span></div><div class="match" style="margin-top:18px"><div>${L.map((x,k)=>`<button class="mi" data-l="${k}">${esc(x.k=='date'?x.t:x.t)}</button>`).join('')}</div><div>${R.map((x,k)=>`<button class="mi" data-r="${k}">${esc(sh(x))}</button>`).join('')}</div></div></div>`;
+ const Ls=[...document.querySelectorAll('[data-l]')],Rs=[...document.querySelectorAll('[data-r]')];
+ Ls.forEach(b=>b.onclick=()=>{if(b.classList.contains('done'))return;Ls.forEach(x=>x.classList.remove('sel'));b.classList.add('sel');sel=b});
+ Rs.forEach(b=>b.onclick=()=>{if(b.classList.contains('done')||!sel)return;S.tot++;if(L[sel.dataset.l]==R[b.dataset.r]){S.sc++;streak++;beep(1);sel.classList.replace('sel','done');b.classList.add('done');sel=null;if(--left==0)setTimeout(()=>{S.i++;S.i<S.r.length?rMT():done(S.sc,S.tot,start)},700)}else{streak=0;beep(0);b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),400)}setStat(`Hanay ${S.i+1} ng ${S.r.length}`,0,`Puntos: ${S.sc} tama · ${S.tot-S.sc} mali`,S.i/S.r.length)})}
+// ---------- Enumeration
+function qEN(){const q=S.q[S.i];if(!q)return $('#main').innerHTML=`<div class="q res"><h2>Walang enumeration sa yunit na ito</h2><p style="color:var(--mut)">Subukan ang “Lahat ng Tanong”.</p></div>`;setStat(`Tanong ${S.i+1} ng ${S.q.length}`,0,`Puntos: ${S.sc} / ${S.tot}`,S.i/S.q.length);
+ $('#main').innerHTML=`<div class="q"><div class="qh">${badge(q.u)}<span>${q.a.length} sagot</span></div><div class="qt">${esc(q.q)}</div><textarea id="ta" placeholder="Isulat ang bawat sagot sa bagong linya..."></textarea><div class="act"><button class="btn" id="chk">Suriin</button></div><div id="fb"></div></div>`;
+ $('#chk').onclick=()=>{const t=' '+norm($('#ta').value)+' ';let h=0;const rows=q.a.map(e=>{const y=e.k.some(k=>t.includes(norm(k)));h+=y;return`<div class="ek ${y?'y':'n'}">${y?'✅':'❌'} <span>${esc(e.a)}</span></div>`}).join('');S.sc+=h;S.tot+=q.a.length;h==q.a.length?(streak++,beep(1)):(streak=0,beep(0));setStat(`Tanong ${S.i+1} ng ${S.q.length}`,0,`Puntos: ${S.sc} / ${S.tot}`,(S.i+1)/S.q.length);$('#chk').disabled=true;$('#fb').innerHTML=`<div class="fb ${h==q.a.length?'ok':'bad'}">${h} / ${q.a.length} tama</div><div style="margin-top:10px">${rows}</div><div class="act"><button class="btn" id="nx">${S.i+1<S.q.length?'Susunod →':'Tingnan ang resulta'}</button></div>`;$('#nx').onclick=()=>{S.i++;S.i<S.q.length?qEN():done(S.sc,S.tot,start)}}}
+// ---------- Flashcards
+function qFC(){const q=S.q[S.i];if(!q)return $('#main').innerHTML=`<div class="q res"><h2>Walang flashcard</h2></div>`;S.f=false;S.k=S.k||0;setStat(`Card ${S.i+1} ng ${S.q.length}`,0,`Alam ko: ${S.sc}`,S.i/S.q.length);
+ const front=q.k=='chap'?`Kabanata ${q.n}`:q.t,back=q.k=='chap'?`${q.t}${q.d?' — '+q.d:''}`:q.d;
+ $('#main').innerHTML=`<div class="q"><div class="qh">${badge(q.u)}<span>I-click ang card para i-flip</span></div><div class="fc" id="fc" style="margin-top:18px"><div class="fci" id="fci"><div><small>Tanong</small>${esc(front)}</div></div></div><div class="act" style="justify-content:center"><button class="btn alt" id="no">🔁 Review ulit</button><button class="btn" id="yes">✅ Alam ko</button></div></div>`;
+ $('#fc').onclick=()=>{S.f=!S.f;$('#fci').className='fci'+(S.f?' back':'');$('#fci').innerHTML=`<div><small>${S.f?'Sagot':'Tanong'}</small>${esc(S.f?back:front)}</div>`};
+ const nx=ok=>{if(ok){S.sc++;beep(1)}else S.q.push(q);S.i++;S.i<S.q.length?qFC():done(S.sc,S.sc+(S.q.length-S.i)+0,start)};$('#yes').onclick=()=>nx(1);$('#no').onclick=()=>nx(0)}
+// ---------- Search
+function seSearch(){setStat('Reviewer Search',0,'',0);$('#main').innerHTML=`<div class="q"><input class="big" id="sq" placeholder="Maghanap: tao, lugar, petsa, kabanata..." autofocus><div id="res"></div></div>`;
+ const run=()=>{const v=$('#sq').value.trim(),n=norm(v);if(n.length<2)return $('#res').innerHTML=`<p style="color:var(--mut)">Mag-type ng kahit 2 letra. ${pool().length} entry ang available.</p>`;const re=new RegExp('('+v.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');const h=pool().filter(i=>norm(`${i.k=='chap'?'kabanata '+i.n:''} ${i.t} ${i.d}`).includes(n)).slice(0,60);$('#res').innerHTML=`<p style="color:var(--mut)">${h.length} resulta</p>`+h.map(i=>`<div class="hit"><div class="u">${esc(uname(i.u))}${i.s?' · '+esc(i.s):''}</div><b>${esc(i.k=='chap'?`Kab. ${i.n} – ${i.t}`:i.t)}</b>${i.d?' – '+esc(i.d).replace(re,'<mark>$1</mark>'):''}</div>`).join('')};$('#sq').oninput=run;run()}
+// ---------- init
+$('#unit').innerHTML=`<option value="-1">📚 LAHAT NG TANONG</option>`+units.map((u,i)=>`<option value="${i}">${i+1}. ${esc(uname(i))}</option>`).join('');
+$('#unit').onchange=e=>{unit=+e.target.value;start()};
+$('#shuf').onclick=e=>{shuffle=!shuffle;e.target.textContent='🔀 Shuffle: '+(shuffle?'Bukas':'Sarado');start()};
+$('#snd').onclick=e=>{sound=!sound;e.target.textContent=(sound?'🔊':'🔇')+' Sound: '+(sound?'Bukas':'Sarado')};
+tabs();start();
+</script></body></html>
